@@ -3,43 +3,43 @@
 # Bryan William (RM551305), Lucas Feijó (RM99727) e Vitor Maia (RM99658).
 
 
-# Definindo função para Menu com duas opções, COMPRAS e ESTOQUE
+# Função para listar Menu com duas opções, COMPRAS e ESTOQUE
 def exibir_menu():
-    print("Menu:")
+    print("----- Menu principal: -----")
     print("1. COMPRAS")
     print("2. ESTOQUE")
 
-# Definindo função de Menu de Compras
+# Função para listar Menu de Compras
     # Fornecedores com CNPJ
     # Comprar suprimentos, com descrição, qtd e valores
     # Poder ver todas as compras
 def exibir_menu_compras():
-    print("Menu de Compras:")
-    print("1. Lista de Fornecedores com CNPJ")
+    print("----- Menu de Compras: -----")
+    print("1. Lista de Fornecedores")
     print("2. Comprar suprimentos")
     print("3. Ver todas as compras feitas")
 
-# Definindo função para Menu de Estoque
+# Função para listar Menu de Estoque
     # Entradas, saídas e estoque 
 def exibir_menu_estoque():
-    print("Menu de Estoque:")
+    print("----- Menu de Estoque: -----")
     print("1. Listar entradas")
     print("2. Listar saídas")
     print("3. Ver estoque total")    
 
-
-
+# Função para listar Fornecedores
 def listar_fornecedores():
     fornecedores = [
-        {"nome": "Fornecedor A", "cnpj": "1234567890"},
-        {"nome": "Fornecedor B", "cnpj": "0987654321"},
-        {"nome": "Fornecedor C", "cnpj": "5678901234"}
+        {"nome": "Fornecedor A", "CNPJ": "1234567890"},
+        {"nome": "Fornecedor B", "CNPJ": "0987654321"},
+        {"nome": "Fornecedor C", "CNPJ": "5678901234"}
     ]
 
     print("Lista de Fornecedores:")
     for fornecedor in fornecedores:
         print(f"{fornecedor['nome']} - CNPJ: {fornecedor['cnpj']}")
 
+# Função para submenu de comprar suprimentos
 def comprar_suprimentos(compras):
     descricao = input("Digite a descrição do suprimento: ")
     quantidade = int(input("Digite a quantidade: "))
@@ -54,6 +54,7 @@ def comprar_suprimentos(compras):
     compras.append(compra)
     print("Compra realizada com sucesso!")
 
+# Função para submenu de ver compras 
 def ver_compras(compras):
     if len(compras) == 0:
         print("Nenhuma compra realizada.")
@@ -65,6 +66,7 @@ def ver_compras(compras):
             print(f"Valor: R${compra['valor']}")
             print("")
 
+# Função para submenu de entradas
 def listar_entradas(entradas):
     if len(entradas) == 0:
         print("Nenhuma entrada registrada.")
@@ -76,6 +78,7 @@ def listar_entradas(entradas):
             print(f"Data: {entrada['data']}")
             print("")
 
+# Função para submenu de saídas
 def listar_saidas(saidas):
     if len(saidas) == 0:
         print("Nenhuma saída registrada.")
@@ -87,6 +90,7 @@ def listar_saidas(saidas):
             print(f"Data: {saida['data']}")
             print("")
 
+# Função para submenu de estoque
 def ver_estoque_total(entradas, saidas):
     estoque = 0
     for entrada in entradas:
@@ -95,6 +99,8 @@ def ver_estoque_total(entradas, saidas):
         estoque -= saida['quantidade']
 
     print(f"Estoque total: {estoque}")
+
+########### Rodar o programa ###############
 
 def main():
     compras = []
