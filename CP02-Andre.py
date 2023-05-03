@@ -17,14 +17,14 @@ def exibir_menu_compras():
     print("----- Menu de Compras: -----")
     print("1. Lista de Fornecedores")
     print("2. Comprar suprimentos")
-    print("3. Ver todas as compras feitas")
+    print("3. Ver todas as compras")
 
 # Função para listar Menu de Estoque
     # Entradas, saídas e estoque 
 def exibir_menu_estoque():
     print("----- Menu de Estoque: -----")
-    print("1. Listar entradas")
-    print("2. Listar saídas")
+    print("1. Entradas")
+    print("2. Saídas")
     print("3. Ver estoque total")    
 
 # Função para listar Fornecedores
@@ -100,7 +100,7 @@ def ver_estoque_total(entradas, saidas):
 
     print(f"Estoque total: {estoque}")
 
-########### Rodar o programa ###############
+########### Definição do programa ###############
 
 def main():
     compras = []
@@ -113,4 +113,12 @@ def main():
 
         if opcao_menu == 1:
             exibir_menu_compras()
-            opcao_compras = int(input("Digite a
+            opcao_compras = int(input("Digite a opção desejada: "))
+            
+        if opcao_menu == 2:
+            exibir_menu_estoque()
+            opcao_estoque = int(input("Digite a opção desejada: "))
+            
+        
+############ Rodar o programa ##################
+main()
