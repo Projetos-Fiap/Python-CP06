@@ -114,11 +114,31 @@ def main():
         if opcao_menu == 1:
             exibir_menu_compras()
             opcao_compras = int(input("Digite a opção desejada: "))
-            
-        if opcao_menu == 2:
+
+            if opcao_compras == 1:
+                listar_fornecedores()
+            elif opcao_compras == 2:
+                comprar_suprimentos(compras)
+            elif opcao_compras == 3:
+                ver_compras(compras)
+            else:
+                print("Opção inválida.")
+
+        elif opcao_menu == 2:
             exibir_menu_estoque()
             opcao_estoque = int(input("Digite a opção desejada: "))
-            
+
+            if opcao_estoque == 1:
+                listar_entradas(entradas)
+            elif opcao_estoque == 2:
+                listar_saidas(saidas)
+            elif opcao_estoque == 3:
+                ver_estoque_total(entradas, saidas)
+            else:
+                print("Opção inválida.")
+
+        else:
+            print("Opção inválida.")
         
 ############ Rodar o programa ##################
 main()

@@ -1,3 +1,7 @@
+# CP02 - Python - Turma 1ESPW
+# Membros do grupo: André Lambert (RM99148), Alessandra Vaiano (RM551497), 
+# Bryan William (RM551305), Lucas Feijó (RM99727) e Vitor Maia (RM99658).
+
 catalogo = {
     'Vinho tinto': 50.00,
     'Vinho branco': 90.00,
@@ -22,9 +26,8 @@ if menu == 1:
         print(f'Seu estoque atual é {estoqueCompleto}.')
 
     else:
-        print('Você precisa digitar uma opção váalida.')    
-elif menu == 2: 
-        
-
+        print('Você precisa digitar uma opção válida.')    
+elif menu == 2:        
+    print('2')
 else:
     print('3')
