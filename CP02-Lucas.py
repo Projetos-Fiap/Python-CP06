@@ -23,8 +23,7 @@ if menu == 1:
 
     else:
         print('Você precisa digitar uma opção váalida.')    
-elif menu == 2:
-    for True in suprementos:
+elif menu == 2: 
         
 
 else:
