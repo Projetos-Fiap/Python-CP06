@@ -5,7 +5,7 @@
 
 # Função para listar Menu com duas opções, COMPRAS e ESTOQUE
 def exibir_menu():
-    print("----- Menu principal: -----")
+    print("-----MENU PRINCIPAL-----")
     print("1. COMPRAS")
     print("2. ESTOQUE")
 
@@ -14,18 +14,18 @@ def exibir_menu():
     # Comprar suprimentos, com descrição, qtd e valores
     # Poder ver todas as compras
 def exibir_menu_compras():
-    print("----- Menu de Compras: -----")
-    print("1. Lista de Fornecedores")
-    print("2. Comprar suprimentos")
-    print("3. Ver todas as compras")
+    print("-----MENU DE COMPRAS-----")
+    print("1. LISTA DE FORNECEDORES")
+    print("2. COMPRAR SUPRIMENTOS")
+    print("3. VER TODAS AS COMPRAS")
 
 # Função para listar Menu de Estoque
     # Entradas, saídas e estoque 
 def exibir_menu_estoque():
-    print("----- Menu de Estoque: -----")
-    print("1. Entradas")
-    print("2. Saídas")
-    print("3. Ver estoque total")    
+    print("-----MENU DE ESTOQUE-----")
+    print("1. ENTRADAS")
+    print("2. SAÍDAS")
+    print("3. VER ESTOQUE")    
 
 # Função para listar Fornecedores
 def listar_fornecedores():
@@ -139,6 +139,7 @@ def main():
 
         else:
             print("Opção inválida.")
+        
         
 ############ Rodar o programa ##################
 main()
