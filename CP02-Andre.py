@@ -37,7 +37,7 @@ def listar_fornecedores():
 
     print("Lista de Fornecedores:")
     for fornecedor in fornecedores:
-        print(f"{fornecedor['nome']} - CNPJ: {fornecedor['cnpj']}")
+        print(f"{fornecedor['nome']} - CNPJ: {fornecedor['CNPJ']}")
 
 # Função para submenu de comprar suprimentos
 def comprar_suprimentos(compras):
