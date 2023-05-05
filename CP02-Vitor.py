@@ -1,7 +1,7 @@
-# CP02 - Python - Turma 1ESPW
-# Membros do grupo: André Lambert (RM99148), Alessandra Vaiano (RM551497), 
-# Bryan William (RM551305), Lucas Feijó (RM99727) e Vitor Maia (RM99658).
-
+# oi vitor tudo bom
+# vou colar até onde eu fiz aqui
+# e comentar algumas coisas q vc precisa fazer
+# obrigado boa sorte deus abençoe
 
 # Menu Principal
 def menu_principal():
@@ -19,8 +19,8 @@ def menu_compras():
     print("||    MENU DE COMPRAS    ||")
     print("===========================")
     print("1. LISTA DE FORNECEDORES")
-    print("2. COMPRAR SUPRIMENTOS")
-    print("3. VER TODAS AS COMPRAS") 
+    print("2. COMPRAR SUPRIMENTOS") # aqui mostra os suprimentos mas tem q criar uma nova função p comprar eles, informar quantidade no ato de compra
+    print("3. VER TODAS AS COMPRAS") # nao fiz essa parte, tem q criar uma lista que adicione as compras dessa linha de cima
     print("0. VOLTAR")
 
 # Menu de Estoque
@@ -29,9 +29,9 @@ def menu_estoque():
     print("===========================")
     print("||    MENU DE ESTOQUE    ||")
     print("===========================")
-    print("1. ENTRADAS") 
-    print("2. SAÍDAS")
-    print("3. VER ESTOQUE")
+    print("1. ENTRADAS")  ## fazer (tem um esqueleto ja)
+    print("2. SAÍDAS") ## fazer (tem um esqueleto ja) 
+    print("3. VER ESTOQUE") ## fazer (tem um esqueleto ja)
     print("0. VOLTAR") 
 
 # Lista de fornecedores

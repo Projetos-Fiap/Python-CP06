@@ -20,7 +20,7 @@ def menu_compras():
     print("===========================")
     print("1. LISTA DE FORNECEDORES")
     print("2. COMPRAR SUPRIMENTOS")
-    print("3. VER TODAS AS COMPRAS") 
+    print("3. VER TODAS AS COMPRAS")
     print("0. VOLTAR")
 
 # Menu de Estoque
@@ -172,16 +172,6 @@ if opcao_menu == 1:
         
     elif opcao_compras == 2:
         comprar_suprimentos(compras)
-        opcao_suprimentos = int(input("DIGITE A OPÇÃO DESEJADA: "))
-        # fazer um if pra comprar os suprimentos 1,2,3 etc
-        if opcao_suprimentos == 9:
-            cadastrar_suprimento()
-        elif opcao_suprimentos == 0:
-            menu_compras()
-        else:
-            print("OPÇÃO INVÁLIDA.")
-        
-        
     elif opcao_compras == 3:
         ver_compras(compras)
     elif opcao_compras == 0:
