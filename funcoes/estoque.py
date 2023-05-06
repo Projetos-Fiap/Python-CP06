@@ -27,6 +27,3 @@ def ver_estoque_total(estoque):
     print('VALOR TOTAL ACUMULDO NO ESTOQUE: R$ %.2f' % valorTotalEstoque)
     print('-----------------------------------')
 
-
-# {"suprimento": "RÓTULOS", "valor": 2.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 1}
-

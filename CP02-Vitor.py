@@ -25,7 +25,8 @@ saidasDB = [
             {"suprimento": "ROLHAS", "quantidade": 1},
             {"suprimento": "GARRAFAS", "quantidade": 1},
         ],
-        "data": "02:48 - 06/05/2023"
+        "data": "02:48 - 06/05/2023",
+        "descricao": "Saída inicial"
     }
 ]
 # Tabela de estoque

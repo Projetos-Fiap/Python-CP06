@@ -61,7 +61,7 @@ def comprar_suprimento(suprimentos, estoque, compras):
         
         print('================================')
         print('||    LISTA DE SUPRIMENTOS    ||')
-        print('===============================')
+        print('================================')
         mostrar_suprimentos(suprimentos)
         print('===============================')
         mostrar_carrinho(carrinho)
