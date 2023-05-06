@@ -3,8 +3,41 @@
 # e comentar algumas coisas q vc precisa fazer
 # obrigado boa sorte deus abençoe
 
+estoque = [
+    {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1},
+    {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1},
+    {"suprimento": "CAIXAS", "valor": 4.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 1},
+    {"suprimento": "RÓTULOS", "valor": 2.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 1}
+]
+
+# Lista de suprimentos
+suprimentos = [
+    {"suprimento": "ROLHAS", "valor": 3.0, "cnpj_fornecedor": "60.718.835/0001-03"},
+    {"suprimento": "GARRAFAS", "valor": 5.0, "cnpj_fornecedor": "60.718.835/0001-03"},
+    {"suprimento": "CAIXAS", "valor": 4.0, "cnpj_fornecedor": "49.548.348/0001-07"},
+    {"suprimento": "RÓTULOS", "valor": 2.0, "cnpj_fornecedor": "49.548.348/0001-07"}
+]    
+    
+# Lista de fornecedores
+fornecedores = [
+    {"fornecedor": "FULANO", "cnpj": "60.718.835/0001-03"},
+    {"fornecedor": "CICLANO", "cnpj": "49.548.348/0001-07"}
+]
+def mostra_menu_comprar_suprimentos():
+    print("\n")
+    print("============================")
+    print("||    MENU SUPRIMENTOS    ||")
+    print("============================")
+    for i, suprimento in enumerate(suprimentos, start=1):
+        print(f"{i}. FORNECEDOR {suprimento['suprimento']}, CNPJ {suprimento['valor']}, FORNECEDOR {suprimento['cnpj_fornecedor']}")
+    print("========================")
+    print("1. COMPRAR SUPRIMENTO")
+    print("2. CADASTRAR NOVO SUPRIMENTO")
+    print("0. VOLTAR")
+
+
 # Menu Principal
-def menu_principal():
+def mostra_menu_principal():
     print("\n")
     print("==========================")
     print("||    MENU PRINCIPAL    ||")
@@ -13,18 +46,18 @@ def menu_principal():
     print("2. ESTOQUE")
 
 # Menu de Compras
-def menu_compras():
+def mostra_menu_compras():
     print("\n")
     print("===========================")
     print("||    MENU DE COMPRAS    ||")
     print("===========================")
     print("1. LISTA DE FORNECEDORES")
-    print("2. COMPRAR SUPRIMENTOS") # aqui mostra os suprimentos mas tem q criar uma nova função p comprar eles, informar quantidade no ato de compra
+    print("2. SUPRIMENTOS") # aqui mostra os suprimentos mas tem q criar uma nova função p comprar eles, informar quantidade no ato de compra
     print("3. VER TODAS AS COMPRAS") # nao fiz essa parte, tem q criar uma lista que adicione as compras dessa linha de cima
     print("0. VOLTAR")
 
 # Menu de Estoque
-def menu_estoque():
+def mostra_menu_estoque():
     print("\n")
     print("===========================")
     print("||    MENU DE ESTOQUE    ||")
@@ -34,20 +67,16 @@ def menu_estoque():
     print("3. VER ESTOQUE") ## fazer (tem um esqueleto ja)
     print("0. VOLTAR") 
 
-# Lista de fornecedores
-fornecedores = [
-    {"fornecedor": "FULANO", "cnpj": "60.718.835/0001-03"},
-    {"fornecedor": "CICLANO", "cnpj": "49.548.348/0001-07"}
-]
 
 # Menu Compras -> Lista de Fornecedores
-def listar_fornecedores():
+def mostra_listar_fornecedores():
     print("\n")
     print("========================")
     print("||    FORNECEDORES    ||")
     print("========================")
     for i, fornecedor in enumerate(fornecedores, start=1):
         print(f"{i}. FORNECEDOR {fornecedor['fornecedor']}, CNPJ {fornecedor['cnpj']}")
+    print("========================")
     print("9. CADASTRAR NOVO FORNECEDOR") 
     print("0. VOLTAR")
 
@@ -64,15 +93,6 @@ def cadastrar_fornecedor():
     fornecedores.append(novo_fornecedor)
     print("\n")
     print("FORNECEDOR CADASTRADO COM SUCESSO!")
-    listar_fornecedores()
-    
-# Lista de suprimentos
-suprimentos = [
-    {"suprimento": "ROLHAS", "valor": "R$ 3"},
-    {"suprimento": "GARRAFAS", "valor": "R$ 5"},
-    {"suprimento": "CAIXAS", "valor": "R$ 4"},
-    {"suprimento": "RÓTULOS", "valor": "R$ 2"}
-]    
     
 # Menu Compras -> Comprar Suprimentos
 def comprar_suprimentos(compras):
@@ -92,17 +112,17 @@ def cadastrar_suprimento():
     print("||  CADASTRAR SUPRIMENTO  ||")
     print("============================")
     suprimento = input("DIGITE O NOME DO SUPRIMENTO: ")
-    valor = input("Digite o CNPJ do fornecedor: ")
-    novo_suprimento = {"suprimento": suprimento, "valor": valor}
-    suprimento.append(novo_suprimento)
+    valor = input("DIGITE O VALOR DO SUPRIMENTO: ")
+    cnpjFornecedor = input("DIGITE O CNPJ DO FORNECEDOR: ")
+    novo_suprimento = {"suprimento": suprimento, "valor": valor, "cnpj_fornecedor": cnpjFornecedor}
+    suprimentos.append(novo_suprimento)
     print("\n")
     print("SUPRIMENTO CADASTRADO COM SUCESSO!")
-    comprar_suprimentos()
 
 # Menu Compras -> Ver todas as compras
 def ver_compras(compras):
     if len(compras) == 0:
-        print("NENHUMA COMPRA REALIZADA.")
+        print("\n\n>>NENHUMA COMPRA REALIZADA.<<")
     else:
         print("COMPRAS REALIZADAS:")
         for compra in compras:
@@ -114,7 +134,7 @@ def ver_compras(compras):
 # Menu Estoque -> Entradas
 def listar_entradas(entradas):
     if len(entradas) == 0:
-        print("NENHUMA ENTRADA REGISTRADA.")
+        print("\n\n >>NENHUMA ENTRADA REGISTRADA.<<")
     else:
         print("ENTRADAS REGISTRADAS:")
         for entrada in entradas:
@@ -126,7 +146,7 @@ def listar_entradas(entradas):
 # Menu Estoque -> Saídas
 def listar_saidas(saidas):
     if len(saidas) == 0:
-        print("NENHUMA SAÍDA REGISTRADA")
+        print("\n\n >>NENHUMA SAÍDA REGISTRADA<<")
     else:
         print("SAÍDAS REGISTRADAS:")
         for saida in saidas:
@@ -151,60 +171,74 @@ compras = []
 entradas = []
 saidas = []
 
-menu_principal()
+while True:
+    mostra_menu_principal()
+    entrada = input("DIGITE A OPÇÃO DESEJADA: ") 
+    match entrada:
+        case "1":
+            while True: 
+                mostra_menu_compras()
+                opcaoCompra = input("DIGITE A OPÇÃO DESEJADA: ")
+                match opcaoCompra:
+                    case "1":
+                        while True:
+                            mostra_listar_fornecedores()
+                            opcaoFornecedor = input('DIGITE A OPÇÃO DESEJADA: ')
+                            match opcaoFornecedor:
+                                case "9":
+                                    cadastrar_fornecedor()
+                                    continue
+                                case "0":
+                                    break
+                                case _:
+                                    print('OPÇÃO INVÁLIDA, TENTE NOVAMENTE\n')
+                                    continue
+                    case "2":
+                        while True:
+                            mostra_menu_comprar_suprimentos()
+                            opcaoSuprimento = input('DIGITE A OPÇÃO DESEJADA: ')
+                            match opcaoSuprimento:
+                                case "1":
+                                    break
+                                case "2":
+                                    cadastrar_suprimento()
+                                    continue
+                                case "0":
+                                    break
+                                case _:
+                                    break
+                    case "3":
+                        ver_compras(compras)
+                        continue
+                    case "0":
+                        break
+                    case _ :
+                        print('OPÇÃO INVÁLIDA, TENTE NOVAMENTE\n')
+                        continue
+            continue
+        case "2":
+            while True:
+                mostra_menu_estoque()
+                opcaoEstoque = input("DIGITE A OPÇÃO DESEJADA: ")
+                match opcaoEstoque:
+                    case "1":
+                        listar_entradas(entradas)
+                        continue
+                    case "2":
+                        listar_saidas(saidas)
+                        continue
+                    case "3":
+                        ver_estoque_total(entradas, saidas)
+                        continue
+                    case "0":
+                        break
+                    case _:
+                        print('OPÇÃO INVÁLIDA, TENTE NOVAMENTE\n')
+                        continue
+            continue
+        case _:
+            break
 
-opcao_menu = int(input("DIGITE A OPÇÃO DESEJADA: "))
 
-if opcao_menu == 1:
-    menu_compras()
-    opcao_compras = int(input("DIGITE A OPÇÃO DESEJADA: "))
-
-    if opcao_compras == 1:
-        listar_fornecedores()
-        opcao_fornecedores = int(input("DIGITE A OPÇÃO DESEJADA: "))
-        
-        if opcao_fornecedores == 9:
-            cadastrar_fornecedor()
-        elif opcao_fornecedores == 0:
-            menu_compras()
-        else:
-            print("OPÇÃO INVÁLIDA.")
-        
-    elif opcao_compras == 2:
-        comprar_suprimentos(compras)
-        opcao_suprimentos = int(input("DIGITE A OPÇÃO DESEJADA: "))
-        # fazer um if pra comprar os suprimentos 1,2,3 etc
-        if opcao_suprimentos == 9:
-            cadastrar_suprimento()
-        elif opcao_suprimentos == 0:
-            menu_compras()
-        else:
-            print("OPÇÃO INVÁLIDA.")
-        
-        
-    elif opcao_compras == 3:
-        ver_compras(compras)
-    elif opcao_compras == 0:
-        menu_principal()
-    else:
-        print("OPÇÃO INVÁLIDA.")
-
-elif opcao_menu == 2:
-    menu_estoque()
-    opcao_estoque = int(input("DIGITE A OPÇÃO DESEJADA: "))
-
-    if opcao_estoque == 1:
-        listar_entradas(entradas)
-    elif opcao_estoque == 2:
-        listar_saidas(saidas)
-    elif opcao_estoque == 3:
-        ver_estoque_total(entradas, saidas)
-    elif opcao_estoque == 0:
-        menu_principal()
-    else:
-        print("OPÇÃO INVÁLIDA.")
-
-else:
-    print("OPÇÃO INVÁLIDA.")
         
 

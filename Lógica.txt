@@ -7,6 +7,7 @@ Menu de Compras
     *Comprar Suprimentos
         *Efetuar compra -> Tem que ter qtd / preço
         Cadastrar novo produto
+            (produto deve ter nome, valor, suprimento e descricao)
     *Ver todas as compras
         Histórico de compras -> Tem que ter qtd / preço
     Voltar (para Menu principal)
