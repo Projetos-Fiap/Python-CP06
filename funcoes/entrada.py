@@ -1,4 +1,4 @@
-# Menu Estoque -> Entradas
+# Mostra todas as entradas na tela
 def listar_entradas(entradas):
     if len(entradas) == 0:
         print('\n\n >>NENHUMA ENTRADA REGISTRADA.<<')

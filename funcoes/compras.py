@@ -4,12 +4,12 @@ def mostra_menu_compras():
     print("===========================")
     print("||    MENU DE COMPRAS    ||")
     print("===========================")
-    print("1. LISTA DE FORNECEDORES")
-    print("2. SUPRIMENTOS") # aqui mostra os suprimentos mas tem q criar uma nova função p comprar eles, informar quantidade no ato de compra
+    print("1. MENU DE FORNECEDORES")
+    print("2. MENU DE SUPRIMENTOS") # aqui mostra os suprimentos mas tem q criar uma nova função p comprar eles, informar quantidade no ato de compra
     print("3. VER TODAS AS COMPRAS") # nao fiz essa parte, tem q criar uma lista que adicione as compras dessa linha de cima
     print("0. VOLTAR")
 
-# Menu Compras -> Ver todas as compras
+# Mostra na tela todas as compras
 def ver_compras(compras):
     if len(compras) == 0:
         print("\n\n>>NENHUMA COMPRA REALIZADA.<<")
