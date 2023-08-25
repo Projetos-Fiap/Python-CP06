@@ -5,7 +5,7 @@ def mostra_menu_compras():
     print("||    MENU DE COMPRAS    ||")
     print("===========================")
     print("1. MENU DE FORNECEDORES")
-    print("2. MENU DE SUPRIMENTOS") # aqui mostra os suprimentos mas tem q criar uma nova função p comprar eles, informar quantidade no ato de compra
+    print("2. MENU DE COMPRAS") # aqui mostra os suprimentos mas tem q criar uma nova função p comprar eles, informar quantidade no ato de compra
     print("3. VER TODAS AS COMPRAS") # nao fiz essa parte, tem q criar uma lista que adicione as compras dessa linha de cima
     print("0. VOLTAR")
 

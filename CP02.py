@@ -54,6 +54,15 @@ fornecedoresDB = [
     {"fornecedor": "CICLANO", "cnpj": "49.548.348/0001-07"}
 ]
 
+opcoesPedidosDB = [
+    {"suprimento": "ROLHAS", "valor": 3.0},
+    {"suprimento": "GARRAFAS", "valor": 5.0},
+    {"suprimento": "CAIXAS", "valor": 4.0},
+    {"suprimento": "RÓTULOS", "valor": 2.0},
+    {"suprimento": "CAIXA 06 GARRAFAS", "valor": 28.0},
+    {"suprimento": "CAIXA 12 GARRAFAS", "valor": 50.0},
+]
+
 # mostrar menu principal
 def mostra_menu_principal():
     print("\n")
