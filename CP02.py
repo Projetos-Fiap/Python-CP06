@@ -4,9 +4,23 @@ import funcoes.estoque as estoque
 import funcoes.fornecedor as fornecedor
 import funcoes.saida as saida
 import funcoes.suprimento as suprimento
+import funcoes.pedidos as pedidos
 import os
 # criando função para limpar o terminal
 limpa_a_tela = lambda: os.system('cls')
+
+# crinado função para validar se a string é um numero:
+
+def eh_numero(valor):
+    if valor == '':
+        return False
+
+    numeros = '0123456789'
+
+    for char in valor:
+        if char not in numeros:
+            return False
+    return True
 
 ########### DEFINIÇÃO DE BASES INICIAIS ###############
 
@@ -31,15 +45,15 @@ saidasDB = [
             {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1}
         ],
         "data": "02:48 - 06/05/2023",
-        "descricao": "Saída inicial"
+        "descricao": "Saída referente ao Pedido Inicial"
     }
 ]
 # Registro incicial de estoque
 estoqueDB = [
-    {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1},
-    {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1},
-    {"suprimento": "CAIXAS", "valor": 4.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 1},
-    {"suprimento": "RÓTULOS", "valor": 2.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 1}
+    {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 400},
+    {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 400},
+    {"suprimento": "CAIXAS", "valor": 4.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 400},
+    {"suprimento": "RÓTULOS", "valor": 2.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 400}
 ]
 # Registro incial de suprimentos
 suprimentosDB = [
@@ -54,23 +68,39 @@ fornecedoresDB = [
     {"fornecedor": "CICLANO", "cnpj": "49.548.348/0001-07"}
 ]
 
+# Registro de opcoes de pedidos
 opcoesPedidosDB = [
-    {"suprimento": "ROLHAS", "valor": 3.0},
-    {"suprimento": "GARRAFAS", "valor": 5.0},
-    {"suprimento": "CAIXAS", "valor": 4.0},
-    {"suprimento": "RÓTULOS", "valor": 2.0},
-    {"suprimento": "CAIXA 06 GARRAFAS", "valor": 28.0},
-    {"suprimento": "CAIXA 12 GARRAFAS", "valor": 50.0},
+    {"opcaoPedido": "ROLHAS", "valor": 3.0},
+    {"opcaoPedido": "GARRAFAS", "valor": 5.0},
+    {"opcaoPedido": "CAIXAS", "valor": 4.0},
+    {"opcaoPedido": "RÓTULOS", "valor": 2.0},
+    {"opcaoPedido": "CAIXA 06 GARRAFAS", "valor": 28.0},
+    {"opcaoPedido": "CAIXA 12 GARRAFAS", "valor": 50.0},
 ]
 
+# Registro incial de pedidos
+pedidosDB = [
+    {
+        "itens": [
+            {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1},
+            {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1}
+        ],
+        "frete": 20.8,
+        "valorTotal": 28.8, 
+        "dataPedido": "02:48 - 06/05/2023",
+        "dataEntrega": "02:48 - 13/05/2023",
+        "descricao": "Pedido inicial"
+    }
+]
 # mostrar menu principal
 def mostra_menu_principal():
     print("\n")
     print("==========================")
     print("||    MENU PRINCIPAL    ||")
     print("==========================")
-    print("1. COMPRAS")
+    print("1. COMPRAS PARA O ESTOQUE")
     print("2. ESTOQUE")
+    print("3. PEDIDOS CLIENTES")
     print("0. FINALIZAR PROGRAMA")
 
 ########### DEFINIÇÃO DO PROGRAMA ###############
@@ -175,6 +205,95 @@ while True:
                         print('OPÇÃO INVÁLIDA, TENTE NOVAMENTE\n')
                         continue
             continue
+        case "3":
+            while True:
+                pedidos.mostra_menu_pedidos()
+                opcaoPedidos = input("DIGITE A OPÇÃO DESEJADA:")
+                limpa_a_tela()
+                match opcaoPedidos:
+                    case '1':
+                        carrinho = []
+                        while True:
+                            pedidos.mostra_menu_realizar_pedido(opcoesPedidosDB)
+                            pedidos.mostra_carrinho(carrinho, opcoesPedidosDB)
+                            opcaoFazerPedido = input('DIGITE A OPÇÃO DESEJADA: ')
+
+                            # Lendo e validando a opção do pedido
+                            if not eh_numero(opcaoFazerPedido):
+                                limpa_a_tela()
+                                print('OPÇÃO INVÁLIDA! TENTE NOVAMENTE!')
+                                continue
+                            opcaoFazerPedido = int(opcaoFazerPedido)
+
+                            if opcaoFazerPedido > len(opcoesPedidosDB) or opcaoFazerPedido < 1:
+                                limpa_a_tela()
+                                print('OPÇÃO INVÁLIDA! TENTE NOVAMENTE!')
+                                continue
+                                
+                            # Lendo e validando a quantidade do pedido
+                            quantidadeFazerPedido = input('DIGITE A QUANTIDADE DESEJADA: ')
+                            if not eh_numero(quantidadeFazerPedido):
+                                limpa_a_tela()
+                                print('QUANTIDADE INVÁLIDA! PENSE NOVAMENTE!')
+                                continue
+                            
+                            quantidadeFazerPedido = int(quantidadeFazerPedido)
+                            if (quantidadeFazerPedido <= 0 ):
+                                limpa_a_tela()
+                                print('QUANTIDADE INVÁLIDA! PENSE NOVAMENTE!')
+                            else:
+                                novoItem = {
+                                    'idOpcaoPedido': opcaoFazerPedido-1,
+                                    'quantidade': quantidadeFazerPedido
+                                }
+                                carrinho.append(novoItem)
+                                limpa_a_tela()
+                                print('ITEM ADICIONADO AO CARRINHO!')
+                                pedidos.mostra_carrinho(carrinho, opcoesPedidosDB)
+                                pedidos.mostrar_menu_continuar_comprando()
+                                opcaoContinuarPedindo = ''
+                                while True:
+                                    opcaoContinuarPedindo = input('DIGITE A OPÇÃO DESEJADA: ')
+                                    if not eh_numero(opcaoContinuarPedindo):
+                                        print('OPÇÃO INVÁLIDA! TENTE NOVAMENTE!')
+                                        continue
+                                    if int(opcaoContinuarPedindo) > len(opcoesPedidosDB):
+                                        print('OPÇÃO INVÁLIDA! TENTE NOVAMENTE!')
+                                        continue
+                                    else:
+                                        break
+                                match opcaoContinuarPedindo:
+                                    case '1':
+                                        limpa_a_tela()
+                                        continue
+                                    case '2':
+                                        descricao = input('ADICIONE UMA DESCRICAO AO SEU PEDIDO: ')
+                                        valorCarrinho = pedidos.calcula_custo_carrinho(carrinho, opcoesPedidosDB)
+                                        frete = pedidos.calcula_frete_carrinho(carrinho, opcoesPedidosDB)
+                                        carrinhoSaida = pedidos.transforma_carrinho_em_carrinho_de_saidas(carrinho, estoqueDB)
+                                        pedidos.registra_pedido(carrinhoSaida, pedidosDB, estoqueDB, descricao, frete, valorCarrinho)
+                                        saida.deduz_carrinho_do_estoque(estoqueDB, carrinhoSaida)
+                                        saida.registra_saida(carrinhoSaida, saidasDB, estoqueDB, f"Saida refente ao pedido {len(pedidosDB)}#")
+                                        print("PEDIDO REGISTRADO COM SUCESSO!")
+                                        break
+                                    case '0':
+                                        limpa_a_tela()
+                                        carrinho = []
+                                        print('CARRINHO ESVAZIADO!')
+                                        continue
+                                    case _:
+                                        limpa_a_tela()
+                                        continue
+                    case '2':
+                        pedidos.listar_pedidos(pedidosDB)
+                        continue
+                    case '0':
+                        break
+                    case _:
+                        print('OPÇÃO INVÁLIDA, TENTE NOVAMENTE\n')
+                        continue
+
+
         case "0": # FINALIZAR O PROGRAMA
             break
         case _:
