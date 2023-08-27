@@ -1,3 +1,10 @@
+# CP04 - Python - Turma 1ESPW
+# Membros do grupo: 
+# André Lambert (RM99148),
+# Bryan William (RM551305), 
+# Lucas Feijó (RM99727), 
+# Vitor Maia (RM99658)
+
 import funcoes.compras as compras
 import funcoes.entrada as entrada
 import funcoes.estoque as estoque
