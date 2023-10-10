@@ -99,6 +99,45 @@ pedidosDB = [
         "descricao": "Pedido inicial"
     }
 ]
+
+tarefasDB = [  #, ,
+    {
+        "id": 0,
+        "dataInicial": "2023-10-09 12:30:00",
+        "dataFinal": "2023-10-16 12:30:00",
+        "responsavel": "André",
+        "descricao": "Varrer o quintal",
+        "complitudeReal": "",
+        "PlanoParaComplitude": ""
+    },
+    {
+        "id": 1,
+        "dataInicial": "2023-10-09 12:30:00",
+        "dataFinal": "2023-10-16 12:30:00",
+        "responsavel": "André",
+        "descricao": "Tirar o lixo",
+        "complitudeReal": "",
+        "PlanoParaComplitude": ""
+    },
+    {
+        "id": 2,
+        "dataInicial": "2023-10-09 12:30:00",
+        "dataFinal": "2023-10-16 12:30:00",
+        "responsavel": "André",
+        "descricao": "Lavar a louça",
+        "complitudeReal": "",
+        "PlanoParaComplitude": ""
+    },
+    {
+        "id": 3,
+        "dataInicial": "2023-10-09 12:30:00",
+        "dataFinal": "2023-10-16 12:30:00",
+        "responsavel": "André",
+        "descricao": "Arrumar a cama",
+        "complitudeReal": "",
+        "PlanoParaComplitude": ""
+    }
+]
 # mostrar menu principal
 def mostra_menu_principal():
     print("\n")

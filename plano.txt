@@ -1,0 +1,19 @@
+tarefa:
+	id 
+	data inicial
+	data final
+	responsavel
+	dscricao	
+	complitude real
+	PlanoParaComplitue
+
+calcular complitude_planejada()
+
+
+
+cadastrar tarefa
+atualizar complitude real
+ver tarefas iniciadas
+ver tarefas atrasadas
+ver tarefas não inciadas
+ver tarefas terminadas
