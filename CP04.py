@@ -100,7 +100,7 @@ pedidosDB = [
     }
 ]
 
-tarefasDB = [  #, ,
+tarefasDB = [ 
     {
         "id": 0,
         "dataInicial": "2023-10-09 12:30:00",

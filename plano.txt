@@ -7,13 +7,26 @@ tarefa:
 	complitude real
 	PlanoParaComplitue
 
-calcular complitude_planejada()
 
 
 
-cadastrar tarefa
+
+cadastrar tarefa <- feito
+calcular complitude_planejada() <- feito
 atualizar complitude real
 ver tarefas iniciadas
 ver tarefas atrasadas
 ver tarefas não inciadas
 ver tarefas terminadas
+
+-----
+Icluir menu tarefas
+ver tarefas iniciadas
+ver tarefas atrasadas
+ver tarefas não inciadas
+ver tarefas terminadas
+atualizar tarefa -> ver se a tarefa existe
+Incluir PlanoParaComplitude (só se tarefa atrasada)
+
+
+
