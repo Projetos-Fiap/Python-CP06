@@ -32,3 +32,7 @@ def mostra_estoque(estoque):
     print('VALOR TOTAL ACUMULADO NO ESTOQUE: R$ %.2f' % valorTotalEstoque)
     print('-----------------------------------')
 
+
+
+
+

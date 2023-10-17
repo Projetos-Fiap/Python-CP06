@@ -13,7 +13,7 @@ tarefa:
 
 cadastrar tarefa <- feito
 calcular complitude_planejada() <- feito
-atualizar complitude real
+atualizar complitude real <- feito
 ver tarefas iniciadas
 ver tarefas atrasadas
 ver tarefas não inciadas
@@ -21,10 +21,10 @@ ver tarefas terminadas
 
 -----
 Icluir menu tarefas
-ver tarefas iniciadas
-ver tarefas atrasadas
-ver tarefas não inciadas
-ver tarefas terminadas
+ver tarefas em andamento <- feito
+ver tarefas atrasadas <- feito
+ver tarefas não inciadas <- feito
+ver tarefas terminadas <- feito
 atualizar tarefa -> ver se a tarefa existe
 Incluir PlanoParaComplitude (só se tarefa atrasada)
 

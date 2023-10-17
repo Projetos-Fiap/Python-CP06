@@ -12,6 +12,7 @@ import funcoes.fornecedor as fornecedor
 import funcoes.saida as saida
 import funcoes.suprimento as suprimento
 import funcoes.pedidos as pedidos
+import funcoes.tarefas as tarefas
 import os
 # criando função para limpar o terminal
 limpa_a_tela = lambda: os.system('cls')
@@ -103,38 +104,38 @@ pedidosDB = [
 tarefasDB = [ 
     {
         "id": 0,
-        "dataInicial": "2023-10-09 12:30:00",
-        "dataFinal": "2023-10-16 12:30:00",
+        "dataInicial": "09/10/2023-12:30",
+        "dataFinal": "16/10/2023-23:30",
         "responsavel": "André",
         "descricao": "Varrer o quintal",
-        "complitudeReal": "",
+        "complitudeReal": "0.00",
         "PlanoParaComplitude": ""
     },
     {
         "id": 1,
-        "dataInicial": "2023-10-09 12:30:00",
-        "dataFinal": "2023-10-16 12:30:00",
+        "dataInicial": "09/10/2023-12:30",
+        "dataFinal": "16/10/2023-22:30",
         "responsavel": "André",
         "descricao": "Tirar o lixo",
-        "complitudeReal": "",
+        "complitudeReal": "0.00",
         "PlanoParaComplitude": ""
     },
     {
         "id": 2,
-        "dataInicial": "2023-10-09 12:30:00",
-        "dataFinal": "2023-10-16 12:30:00",
+        "dataInicial": "09/10/2023-12:30",
+        "dataFinal": "16/10/2023-22:00",
         "responsavel": "André",
         "descricao": "Lavar a louça",
-        "complitudeReal": "",
+        "complitudeReal": "100.00",
         "PlanoParaComplitude": ""
     },
     {
         "id": 3,
-        "dataInicial": "2023-10-09 12:30:00",
-        "dataFinal": "2023-10-16 12:30:00",
+        "dataInicial": "17/10/2023-12:30",
+        "dataFinal": "18/10/2023-12:30",
         "responsavel": "André",
         "descricao": "Arrumar a cama",
-        "complitudeReal": "",
+        "complitudeReal": "0.00",
         "PlanoParaComplitude": ""
     }
 ]
@@ -147,6 +148,7 @@ def mostra_menu_principal():
     print("1. COMPRAS PARA O ESTOQUE")
     print("2. ESTOQUE")
     print("3. PEDIDOS CLIENTES")
+    print("4. TAREFAS")
     print("0. FINALIZAR PROGRAMA")
 
 ########### DEFINIÇÃO DO PROGRAMA ###############
@@ -251,7 +253,7 @@ while True:
                         print('OPÇÃO INVÁLIDA, TENTE NOVAMENTE\n')
                         continue
             continue
-        case "3":
+        case "3": # PEDIDOS CLIENTES
             while True:
                 pedidos.mostra_menu_pedidos()
                 opcaoPedidos = input("DIGITE A OPÇÃO DESEJADA:")
@@ -338,7 +340,72 @@ while True:
                     case _:
                         print('OPÇÃO INVÁLIDA, TENTE NOVAMENTE\n')
                         continue
-
+        case "4": # TAREFAS
+            limpa_a_tela()
+            while True:
+                tarefas.mostra_menu_tarefas()
+                opcaoTarefas = input("DIGITE A OPÇÃO DESEJADA: ")
+                match opcaoTarefas:
+                    case "1":
+                        limpa_a_tela()
+                        tarefas.cadastrar_tarefa(tarefasDB)
+                        continue
+                    case "2":
+                        tarefas.atualizar_complitude_real(tarefasDB)
+                        continue
+                    case "3":
+                        limpa_a_tela()
+                        tarefas.menu_tarefas_em_andamento()
+                        tarefas.mostra_tarefas(tarefasDB)
+                        continue
+                    case "4":
+                        limpa_a_tela()
+                        tarefasAndamento = tarefas.filtrar_tarefas_em_andamento(tarefasDB)
+                        if tarefasAndamento == []:
+                            print('NÃO HÁ TAREFAS EM ANDAMENTO')
+                            continue
+                        else:
+                            tarefas.menu_tarefas_em_andamento()
+                            tarefas.mostra_tarefas(tarefasAndamento)
+                            continue
+                    case "5":
+                        limpa_a_tela()
+                        tarefasConcluidas = tarefas.filtrar_tarefas_concluidas(tarefasDB)
+                        if tarefasConcluidas == []:
+                            print('NÃO HÁ TAREFAS CONCLUÍDAS')
+                            continue
+                        else:
+                            tarefas.menu_tarefas_concluidas()
+                            tarefas.mostra_tarefas(tarefasConcluidas)
+                            continue
+                    case "6":
+                        limpa_a_tela()
+                        tarefasNaoIniciadas = tarefas.filtrar_tarefas_nao_iniciadas(tarefasDB)
+                        if tarefasNaoIniciadas == []:
+                            print('NÃO HÁ TAREFAS NÃO INICIADAS')
+                            continue
+                        else:
+                            tarefas.menu_tarefas_nao_iniciadas()
+                            tarefas.mostra_tarefas(tarefasNaoIniciadas)
+                            continue
+                    case "7":
+                        limpa_a_tela()
+                        tarefas.menu_tarefas_atrasadas()
+                        tarefasAtrasadas = tarefas.filtrar_tarefas_atrasadas(tarefasDB)
+                        if tarefasAtrasadas == []:
+                            print('NÃO HÁ TAREFAS ATRASADAS')
+                            continue
+                        else:
+                            tarefas.mostra_tarefas(tarefasAtrasadas)
+                            continue
+                    case "8":
+                        tarefas.insere_plano_para_complitude(tarefasDB)
+                        continue
+                    case "0":
+                        break;
+                    case _:
+                        print('OPÇÃO INVÁLIDA, TENTE NOVAMENTE\n')
+                        continue
 
         case "0": # FINALIZAR O PROGRAMA
             break
