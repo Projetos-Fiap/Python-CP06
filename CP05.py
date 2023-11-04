@@ -1,7 +1,6 @@
 # CP04 - Python - Turma 1ESPW
 # Membros do grupo: 
-# André Lambert (RM99148),
-# Bryan William (RM551305), 
+# André Lambert (RM99148), 
 # Lucas Feijó (RM99727), 
 # Vitor Maia (RM99658)
 
