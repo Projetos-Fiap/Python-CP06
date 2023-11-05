@@ -1,0 +1,10 @@
+[
+    {
+        "itens": [
+            {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1},
+            {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1}
+        ],
+        "data": "02:48 - 06/05/2023",
+        "descricao": "Saída referente ao Pedido Inicial"
+    }
+]

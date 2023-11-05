@@ -1,0 +1,38 @@
+[ 
+    {
+        "id": 0,
+        "dataInicial": "09/10/2023-12:30",
+        "dataFinal": "16/10/2023-23:30",
+        "responsavel": "André",
+        "descricao": "Varrer o quintal",
+        "complitudeReal": "0.00",
+        "PlanoParaComplitude": ""
+    },
+    {
+        "id": 1,
+        "dataInicial": "09/10/2023-12:30",
+        "dataFinal": "16/10/2023-22:30",
+        "responsavel": "André",
+        "descricao": "Tirar o lixo",
+        "complitudeReal": "0.00",
+        "PlanoParaComplitude": ""
+    },
+    {
+        "id": 2,
+        "dataInicial": "09/10/2023-12:30",
+        "dataFinal": "16/10/2023-22:00",
+        "responsavel": "André",
+        "descricao": "Lavar a louça",
+        "complitudeReal": "100.00",
+        "PlanoParaComplitude": ""
+    },
+    {
+        "id": 3,
+        "dataInicial": "17/10/2023-12:30",
+        "dataFinal": "18/10/2023-12:30",
+        "responsavel": "André",
+        "descricao": "Arrumar a cama",
+        "complitudeReal": "0.00",
+        "PlanoParaComplitude": ""
+    }
+]

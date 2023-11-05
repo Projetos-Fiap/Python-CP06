@@ -1,0 +1,8 @@
+[
+    {"opcaoPedido": "ROLHAS", "valor": 3.0},
+    {"opcaoPedido": "GARRAFAS", "valor": 5.0},
+    {"opcaoPedido": "CAIXAS", "valor": 4.0},
+    {"opcaoPedido": "RÓTULOS", "valor": 2.0},
+    {"opcaoPedido": "CAIXA 06 GARRAFAS", "valor": 28.0},
+    {"opcaoPedido": "CAIXA 12 GARRAFAS", "valor": 50.0}
+]

@@ -1,0 +1,13 @@
+[
+    {
+        "itens": [
+            {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1},
+            {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1}
+        ],
+        "frete": 20.8,
+        "valorTotal": 28.8, 
+        "dataPedido": "02:48 - 06/05/2023",
+        "dataEntrega": "02:48 - 13/05/2023",
+        "descricao": "Pedido inicial"
+    }
+]

@@ -1,3 +1,5 @@
+
+import funcoes.crudBanco as crudBanco
 import os
 clear = lambda: os.system('cls')
 
@@ -17,6 +19,8 @@ def cadastrar_suprimento(suprimentos, estoque):
         novo_item_estoque = {"suprimento": suprimento, "valor": valor, "CNPJ_FORNECEDOR": cnpjFornecedor, "quantidade": 0}
         suprimentos.append(novo_suprimento)
         estoque.append(novo_item_estoque)
+        crudBanco.sobrescreve_suprimentos(suprimentos)
+        crudBanco.sobrescreve_estoque(estoque)
         clear()
         print('SUPRIMENTO CADASTRADO COM SUCESSO!')
 
@@ -141,6 +145,7 @@ def registra_compra(carrinho, compras, estoque, descricao):
         "descricao": descricao
     }
     compras.append(compra)
+    crudBanco.sobrescreve_compras(compras)
 
 # Converte um objeto do tipo datetime para string no formato usado para registrar a data da saída
 def converte_data_em_string(data):

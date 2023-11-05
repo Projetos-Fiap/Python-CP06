@@ -1,6 +1,9 @@
 import os
 clear = lambda: os.system('cls')
 from datetime import datetime, timedelta
+import funcoes.crudBanco as crudBanco
+
+
 
 # Mostra na tela o menu que pergunta ao usuário se ele quer continuar comprando
 def mostrar_menu_continuar_comprando():
@@ -10,7 +13,6 @@ def mostrar_menu_continuar_comprando():
     print('1. SIM')
     print('2. FINALIZAR COMPRA')
     print('0. ESVAZIAR CARRINHO')
-
 
 def mostra_menu_pedidos():
     print('\n')
@@ -137,6 +139,7 @@ def registra_pedido(carrinho, pedidos, estoque, descricao, frete, valorCarrinho)
         "descricao": descricao
     }
     pedidos.append(pedido)
+    crudBanco.sobrescreve_pedidos(pedidos)
 
 def listar_saidas(saidas):
     if len(saidas) == 0:

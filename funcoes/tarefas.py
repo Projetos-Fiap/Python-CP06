@@ -1,5 +1,5 @@
+import funcoes.crudBanco as crudBanco
 import funcoes.datas as datas
-from datetime import datetime
 
 limpa_a_tela = lambda: os.system('cls')
 
@@ -34,6 +34,7 @@ def cadastrar_tarefa(tarefas):
 
         nova_tarefa = {"id": len(tarefas), "dataInicial": dataInicial, "dataFinal": dataFinal, "responsavel": responsavel, "descricao": descricao, "complitudeReal": complitudeReal, "PlanoParaComplitude": ""}
         tarefas.append(nova_tarefa)
+        crudBanco.sobrescreve_tarefas(tarefas)
 
         print('TAREFA CADASTRADA COM SUCESSO!')
         break

@@ -1,3 +1,4 @@
+import funcoes.crudBanco as crudBanco
 import os
 # Defininfo função que limpa a tela do terminal
 limpa_a_tela = lambda: os.system('cls')
@@ -94,6 +95,7 @@ def registra_saida(carrinho, saidas, estoque, descricao):
         "descricao": descricao
     }
     saidas.append(saida)
+    crudBanco.sobrescreve_saidas(saidas)
 
 # Converte um objeto do tipo datetime para string no formato usado para registrar a data da saída
 def converte_data_em_string(data):

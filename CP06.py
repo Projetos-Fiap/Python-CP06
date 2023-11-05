@@ -1,4 +1,4 @@
-# CP04 - Python - Turma 1ESPW
+# CP06 - Python - Turma 1ESPW
 # Membros do grupo: 
 # André Lambert (RM99148), 
 # Lucas Feijó (RM99727), 
@@ -12,6 +12,7 @@ import funcoes.saida as saida
 import funcoes.suprimento as suprimento
 import funcoes.pedidos as pedidos
 import funcoes.tarefas as tarefas
+import funcoes.crudBanco as crudBanco
 import os
 # criando função para limpar o terminal
 limpa_a_tela = lambda: os.system('cls')
@@ -32,112 +33,120 @@ def eh_numero(valor):
 ########### DEFINIÇÃO DE BASES INICIAIS ###############
 
 # Registro incial de compras
-comprasDB = [
-    {
-        "itens": [
-            {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 2},
-            {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 2},
-            {"suprimento": "CAIXAS", "valor": 4.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 1},
-            {"suprimento": "RÓTULOS", "valor": 2.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 1}
-        ],
-        "data": "02:43 - 6/5/2023",
-        "descricao": "Compra inicial"
-    }  
-]
+comprasDB = crudBanco.carrega_compras()
+# [
+#     {
+#         "itens": [
+#             {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 2},
+#             {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 2},
+#             {"suprimento": "CAIXAS", "valor": 4.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 1},
+#             {"suprimento": "RÓTULOS", "valor": 2.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 1}
+#         ],
+#         "data": "02:43 - 6/5/2023",
+#         "descricao": "Compra inicial"
+#     }  
+# ]
 # Registro inicial de saídas
-saidasDB = [
-    {
-        "itens": [
-            {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1},
-            {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1}
-        ],
-        "data": "02:48 - 06/05/2023",
-        "descricao": "Saída referente ao Pedido Inicial"
-    }
-]
+saidasDB = crudBanco.carrega_saidas()
+# [
+#     {
+#         "itens": [
+#             {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1},
+#             {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1}
+#         ],
+#         "data": "02:48 - 06/05/2023",
+#         "descricao": "Saída referente ao Pedido Inicial"
+#     }
+# ]
 # Registro incicial de estoque
-estoqueDB = [
-    {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 400},
-    {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 400},
-    {"suprimento": "CAIXAS", "valor": 4.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 400},
-    {"suprimento": "RÓTULOS", "valor": 2.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 400}
-]
+estoqueDB = crudBanco.carrega_estoque()
+# [
+#     {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 400},
+#     {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 400},
+#     {"suprimento": "CAIXAS", "valor": 4.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 400},
+#     {"suprimento": "RÓTULOS", "valor": 2.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07", "quantidade": 400}
+# ]
 # Registro incial de suprimentos
-suprimentosDB = [
-    {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03"},
-    {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03"},
-    {"suprimento": "CAIXAS", "valor": 4.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07"},
-    {"suprimento": "RÓTULOS", "valor": 2.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07"}
-]     
+suprimentosDB = crudBanco.carrega_suprimentos()
+# [
+#     {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03"},
+#     {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03"},
+#     {"suprimento": "CAIXAS", "valor": 4.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07"},
+#     {"suprimento": "RÓTULOS", "valor": 2.0, "CNPJ_FORNECEDOR": "49.548.348/0001-07"}
+# ]     
 # Registro incial de fornecedores
-fornecedoresDB = [
-    {"fornecedor": "FULANO", "cnpj": "60.718.835/0001-03"},
-    {"fornecedor": "CICLANO", "cnpj": "49.548.348/0001-07"}
-]
+fornecedoresDB = crudBanco.carrega_fornecedores()
+# [
+#     {"fornecedor": "FULANO", "cnpj": "60.718.835/0001-03"},
+#     {"fornecedor": "CICLANO", "cnpj": "49.548.348/0001-07"}
+# ]
 
 # Registro de opcoes de pedidos
-opcoesPedidosDB = [
-    {"opcaoPedido": "ROLHAS", "valor": 3.0},
-    {"opcaoPedido": "GARRAFAS", "valor": 5.0},
-    {"opcaoPedido": "CAIXAS", "valor": 4.0},
-    {"opcaoPedido": "RÓTULOS", "valor": 2.0},
-    {"opcaoPedido": "CAIXA 06 GARRAFAS", "valor": 28.0},
-    {"opcaoPedido": "CAIXA 12 GARRAFAS", "valor": 50.0},
-]
+opcoesPedidosDB = crudBanco.carrega_pedidos()
+# [
+#     {"opcaoPedido": "ROLHAS", "valor": 3.0},
+#     {"opcaoPedido": "GARRAFAS", "valor": 5.0},
+#     {"opcaoPedido": "CAIXAS", "valor": 4.0},
+#     {"opcaoPedido": "RÓTULOS", "valor": 2.0},
+#     {"opcaoPedido": "CAIXA 06 GARRAFAS", "valor": 28.0},
+#     {"opcaoPedido": "CAIXA 12 GARRAFAS", "valor": 50.0}
+# ]
 
 # Registro incial de pedidos
-pedidosDB = [
-    {
-        "itens": [
-            {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1},
-            {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1}
-        ],
-        "frete": 20.8,
-        "valorTotal": 28.8, 
-        "dataPedido": "02:48 - 06/05/2023",
-        "dataEntrega": "02:48 - 13/05/2023",
-        "descricao": "Pedido inicial"
-    }
-]
+pedidosDB = crudBanco.carrega_pedidos()
+# [
+#     {
+#         "itens": [
+#             {"suprimento": "ROLHAS", "valor": 3.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1},
+#             {"suprimento": "GARRAFAS", "valor": 5.0, "CNPJ_FORNECEDOR": "60.718.835/0001-03", "quantidade": 1}
+#         ],
+#         "frete": 20.8,
+#         "valorTotal": 28.8, 
+#         "dataPedido": "02:48 - 06/05/2023",
+#         "dataEntrega": "02:48 - 13/05/2023",
+#         "descricao": "Pedido inicial"
+#     }
+# ]
 
-tarefasDB = [ 
-    {
-        "id": 0,
-        "dataInicial": "09/10/2023-12:30",
-        "dataFinal": "16/10/2023-23:30",
-        "responsavel": "André",
-        "descricao": "Varrer o quintal",
-        "complitudeReal": "0.00",
-        "PlanoParaComplitude": ""
-    },
-    {
-        "id": 1,
-        "dataInicial": "09/10/2023-12:30",
-        "dataFinal": "16/10/2023-22:30",
-        "responsavel": "André",
-        "descricao": "Tirar o lixo",
-        "complitudeReal": "0.00",
-        "PlanoParaComplitude": ""
-    },
-    {
-        "id": 2,
-        "dataInicial": "09/10/2023-12:30",
-        "dataFinal": "16/10/2023-22:00",
-        "responsavel": "André",
-        "descricao": "Lavar a louça",
-        "complitudeReal": "100.00",
-        "PlanoParaComplitude": ""
-    },
-    {
-        "id": 3,
-        "dataInicial": "17/10/2023-12:30",
-        "dataFinal": "18/10/2023-12:30",
-        "responsavel": "André",
-        "descricao": "Arrumar a cama",
-        "complitudeReal": "0.00",
-        "PlanoParaComplitude": ""
-    }
-]
+tarefasDB = crudBanco.carrega_tarefas()
+# [ 
+#     {
+#         "id": 0,
+#         "dataInicial": "09/10/2023-12:30",
+#         "dataFinal": "16/10/2023-23:30",
+#         "responsavel": "André",
+#         "descricao": "Varrer o quintal",
+#         "complitudeReal": "0.00",
+#         "PlanoParaComplitude": ""
+#     },
+#     {
+#         "id": 1,
+#         "dataInicial": "09/10/2023-12:30",
+#         "dataFinal": "16/10/2023-22:30",
+#         "responsavel": "André",
+#         "descricao": "Tirar o lixo",
+#         "complitudeReal": "0.00",
+#         "PlanoParaComplitude": ""
+#     },
+#     {
+#         "id": 2,
+#         "dataInicial": "09/10/2023-12:30",
+#         "dataFinal": "16/10/2023-22:00",
+#         "responsavel": "André",
+#         "descricao": "Lavar a louça",
+#         "complitudeReal": "100.00",
+#         "PlanoParaComplitude": ""
+#     },
+#     {
+#         "id": 3,
+#         "dataInicial": "17/10/2023-12:30",
+#         "dataFinal": "18/10/2023-12:30",
+#         "responsavel": "André",
+#         "descricao": "Arrumar a cama",
+#         "complitudeReal": "0.00",
+#         "PlanoParaComplitude": ""
+#     }
+# ]
 # mostrar menu principal
 def mostra_menu_principal():
     print("\n")
