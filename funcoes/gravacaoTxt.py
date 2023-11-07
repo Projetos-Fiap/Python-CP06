@@ -1,7 +1,7 @@
 from datetime import datetime
 def gravar_saida_txt(string):
-    data = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-    with open(f"./saidas/{data}.txt", 'w') as arquivo:
+    data = datetime.now().strftime('%d%m%Y-%Hh%Mm%S')
+    with open(f"saidas/{data}.txt", 'w', encoding='utf-8') as arquivo:
      arquivo.write(string)
      print(f"ARQUIVO {data}.txt GRAVADO COM SUCESSO!")
 

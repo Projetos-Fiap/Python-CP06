@@ -94,6 +94,12 @@ def filtrar_tarefas_atrasadas(tarefas):
     tarefasClone = list(filter(lambda tarefa: float(tarefa['complitudeReal']) < calcular_complitude_planejada(tarefa), tarefasClone))
     return tarefasClone
 
+def string_mostra_tarefas(tarefas):
+    string = ''
+    for tarefa in tarefas:
+        string += f"ID: {tarefa['id']}\nDATA INICIAL: {tarefa['dataInicial']} | DATA FINAL: {tarefa['dataFinal']}\nRESPONSÁVEL: {tarefa['responsavel']}\nDESCRIÇÃO: {tarefa['descricao']}\nCOMPLITUDE REAL: {tarefa['complitudeReal']} | COMPLITUDE PLANEJADA: {calcular_complitude_planejada(tarefa)}\nPLANO PARA COMPLITUDE: {tarefa['PlanoParaComplitude']}\n\n"
+    return string
+
 def mostra_tarefas(tarefas):
     for tarefa in tarefas:
         print(f"ID: {tarefa['id']}\nDATA INICIAL: {tarefa['dataInicial']} | DATA FINAL: {tarefa['dataFinal']}\nRESPONSÁVEL: {tarefa['responsavel']}\nDESCRIÇÃO: {tarefa['descricao']}\nCOMPLITUDE REAL: {tarefa['complitudeReal']} | COMPLITUDE PLANEJADA: {calcular_complitude_planejada(tarefa)}\nPLANO PARA COMPLITUDE: {tarefa['PlanoParaComplitude']}")

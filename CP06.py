@@ -13,6 +13,7 @@ import funcoes.suprimento as suprimento
 import funcoes.pedidos as pedidos
 import funcoes.tarefas as tarefas
 import funcoes.crudBanco as crudBanco
+import funcoes.gravacaoTxt as gravacaoTxt
 import os
 # criando função para limpar o terminal
 limpa_a_tela = lambda: os.system('cls')
@@ -209,8 +210,19 @@ while True:
                                     print('OPÇÃO INVÁLIDA, TENTE NOVAMENTE\n')
                                     continue
                     case "3": # COMPRAS > VER TODAS AS COMPRAS
-                        limpa_a_tela()
-                        compras.ver_compras(comprasDB)
+                        while True:
+                            gravacao = gravacaoTxt.menu_deseja_gravar_saida()
+                            match gravacao:
+                                case "1":
+                                    limpa_a_tela()
+                                    gravacaoTxt.gravar_saida_txt(compras.string_ver_compras(comprasDB))
+                                case "2":
+                                    limpa_a_tela()
+                                    compras.ver_compras(comprasDB)
+                                case _:
+                                    print("OPÇÃO INVÁLIDA, TENTE NOVAMENTE!")
+                                    continue
+                            break         
                         continue
                     case "0": # VOLTAR
                         limpa_a_tela()
@@ -226,8 +238,19 @@ while True:
                 opcaoEstoque = input("DIGITE A OPÇÃO DESEJADA: ")
                 match opcaoEstoque:
                     case "1": # ESTOQUE > MOSTRAR ENTRADAS
-                        limpa_a_tela()
-                        entrada.listar_entradas(comprasDB)
+                        while True:
+                            gravacao = gravacaoTxt.menu_deseja_gravar_saida()
+                            match gravacao:
+                                case "1":
+                                    limpa_a_tela()
+                                    gravacaoTxt.gravar_saida_txt(entrada.string_lista_entradas(comprasDB))
+                                case "2":
+                                    limpa_a_tela()
+                                    entrada.listar_entradas(comprasDB)
+                                case _:
+                                    print("OPÇÃO INVÁLIDA, TENTE NOVAMENTE!")
+                                    continue
+                            break
                         continue
                     case "2": # ESTOQUE > MENU SAÍDAS
                         limpa_a_tela()
@@ -236,8 +259,19 @@ while True:
                             opcaoSaida = input("DIGITE A OPÇÃO DESEJADA: ")
                             match opcaoSaida:
                                 case "1": # ESTOQUE > MENU SAÍDAS > LISTAR SAÍDAS
-                                    limpa_a_tela()
-                                    saida.listar_saidas(saidasDB)
+                                    while True:
+                                        gravacao = gravacaoTxt.menu_deseja_gravar_saida()
+                                        match gravacao:
+                                            case "1":
+                                                limpa_a_tela()
+                                                gravacaoTxt.gravar_saida_txt(saida.string_lista_saidas(saidasDB))
+                                            case "2":
+                                                limpa_a_tela()
+                                                saida.listar_saidas(saidasDB)
+                                            case _:
+                                                print("OPÇÃO INVÁLIDA, TENTE NOVAMENTE!")
+                                                continue
+                                        break
                                     continue
                                 case "2": # ESTOQUE > MENU SAÍDAS > CADASTRAR SAÍDAS
                                     limpa_a_tela()
@@ -251,8 +285,20 @@ while True:
                                     continue
                         continue
                     case "3": # ESTOQUE > MOSTRAR ESTOQUE
-                        limpa_a_tela()
-                        estoque.mostra_estoque(estoqueDB)
+                        while True:
+                            gravacao = gravacaoTxt.menu_deseja_gravar_saida()
+                            match gravacao:
+                                case "1":
+                                    limpa_a_tela()
+                                    gravacaoTxt.gravar_saida_txt(estoque.string_mostra_estoque(estoqueDB))
+                                case "2":
+                                    limpa_a_tela()
+                                    estoque.mostra_estoque(estoqueDB)
+                                case _:
+                                    print("OPÇÃO INVÁLIDA, TENTE NOVAMENTE!")
+                                    continue
+                            break
+
                         continue
                     case "0": # VOLTAR
                         limpa_a_tela()
@@ -341,7 +387,19 @@ while True:
                                         limpa_a_tela()
                                         continue
                     case '2':
-                        pedidos.listar_pedidos(pedidosDB)
+                        while True:
+                            gravacao = gravacaoTxt.menu_deseja_gravar_saida()
+                            match gravacao:
+                                case "1":
+                                    limpa_a_tela()
+                                    gravacaoTxt.gravar_saida_txt(pedidos.string_lista_pedidos(pedidosDB))
+                                case "2":
+                                    limpa_a_tela()
+                                    pedidos.listar_pedidos(pedidosDB)
+                                case _:
+                                    print("OPÇÃO INVÁLIDA, TENTE NOVAMENTE!")
+                                    continue
+                            break
                         continue
                     case '0':
                         break
@@ -363,49 +421,116 @@ while True:
                         continue
                     case "3":
                         limpa_a_tela()
-                        tarefas.menu_tarefas_em_andamento()
-                        tarefas.mostra_tarefas(tarefasDB)
+                        gravacao = gravacaoTxt.menu_deseja_gravar_saida()
+                        match gravacao:
+                            case "1":
+                                limpa_a_tela()
+                                gravacaoTxt.gravar_saida_txt(tarefas.string_mostra_tarefas(tarefasDB))
+                            case "2":
+                                limpa_a_tela()
+                                tarefas.menu_tarefas_em_andamento()
+                                tarefas.mostra_tarefas(tarefasDB)
+                            case _:
+                                print("OPÇÃO INVÁLIDA, TENTE NOVAMENTE!")
+                                continue
                         continue
                     case "4":
-                        limpa_a_tela()
-                        tarefasAndamento = tarefas.filtrar_tarefas_em_andamento(tarefasDB)
-                        if tarefasAndamento == []:
-                            print('NÃO HÁ TAREFAS EM ANDAMENTO')
-                            continue
-                        else:
-                            tarefas.menu_tarefas_em_andamento()
-                            tarefas.mostra_tarefas(tarefasAndamento)
-                            continue
+                        while True:
+                            gravacao = gravacaoTxt.menu_deseja_gravar_saida()
+                            tarefasAndamento = tarefas.filtrar_tarefas_em_andamento(tarefasDB)
+                            match gravacao:
+                                case "1":
+                                    limpa_a_tela()
+                                    if tarefasAndamento == []:
+                                        print('NÃO HÁ TAREFAS EM ANDAMENTO')
+                                        gravacaoTxt.gravar_saida_txt('NÃO HÁ TAREFAS EM ANDAMENTO')
+                                    else:
+                                        gravacaoTxt.gravar_saida_txt(tarefas.string_mostra_tarefas(tarefasAndamento))
+                                case "2":
+                                    limpa_a_tela()
+                                    if tarefasAndamento == []:
+                                        print('NÃO HÁ TAREFAS EM ANDAMENTO')
+                                    else:
+                                        tarefas.menu_tarefas_em_andamento()
+                                        tarefas.mostra_tarefas(tarefasAndamento)
+                                case _:
+                                    print("OPÇÃO INVÁLIDA, TENTE NOVAMENTE!")
+                                    continue
+                            break
+                        continue
                     case "5":
-                        limpa_a_tela()
-                        tarefasConcluidas = tarefas.filtrar_tarefas_concluidas(tarefasDB)
-                        if tarefasConcluidas == []:
-                            print('NÃO HÁ TAREFAS CONCLUÍDAS')
-                            continue
-                        else:
-                            tarefas.menu_tarefas_concluidas()
-                            tarefas.mostra_tarefas(tarefasConcluidas)
-                            continue
+                        while True:
+                            gravacao = gravacaoTxt.menu_deseja_gravar_saida()
+                            tarefasConcluidas = tarefas.filtrar_tarefas_concluidas(tarefasDB)
+                            match gravacao:
+                                case "1":
+                                    limpa_a_tela()
+                                    if tarefasConcluidas == []:
+                                        print('NÃO HÁ TAREFAS CONCLUÍDAS')
+                                        gravacaoTxt.gravar_saida_txt('NÃO HÁ TAREFAS CONCLUÍDAS')
+                                    else:
+                                        gravacaoTxt.gravar_saida_txt(tarefas.string_mostra_tarefas(tarefasConcluidas))
+                                case "2":
+                                    limpa_a_tela()
+                                    if tarefasConcluidas == []:
+                                        print('NÃO HÁ TAREFAS CONCLUÍDAS')
+                                    else:
+                                        tarefas.menu_tarefas_concluidas()
+                                        tarefas.mostra_tarefas(tarefasConcluidas)
+                                    
+                                case _:
+                                    print("OPÇÃO INVÁLIDA, TENTE NOVAMENTE!")
+                                    continue
+                            break
+                        continue
                     case "6":
-                        limpa_a_tela()
-                        tarefasNaoIniciadas = tarefas.filtrar_tarefas_nao_iniciadas(tarefasDB)
-                        if tarefasNaoIniciadas == []:
-                            print('NÃO HÁ TAREFAS NÃO INICIADAS')
-                            continue
-                        else:
-                            tarefas.menu_tarefas_nao_iniciadas()
-                            tarefas.mostra_tarefas(tarefasNaoIniciadas)
-                            continue
+                        while True:
+                            gravacao = gravacaoTxt.menu_deseja_gravar_saida()
+                            tarefasNaoIniciadas = tarefas.filtrar_tarefas_nao_iniciadas(tarefasDB)
+                            match gravacao:
+                                case "1":
+                                    limpa_a_tela()
+                                    if tarefasNaoIniciadas == []:
+                                        print('NÃO HÁ TAREFAS NÃO INICIADAS')
+                                        gravacaoTxt.gravar_saida_txt('NÃO HÁ TAREFAS NÃO INICIADAS')
+                                    else:
+                                        gravacaoTxt.gravar_saida_txt(tarefas.string_mostra_tarefas(tarefasNaoIniciadas))
+                                case "2":
+                                    limpa_a_tela()
+                                    if tarefasNaoIniciadas == []:
+                                        print('NÃO HÁ TAREFAS NÃO INICIADAS')
+                                    else:
+                                        tarefas.menu_tarefas_nao_iniciadas()
+                                        tarefas.mostra_tarefas(tarefasNaoIniciadas)
+                                case _:
+                                    print("OPÇÃO INVÁLIDA, TENTE NOVAMENTE!")
+                                    continue
+                            break
+                        continue
                     case "7":
-                        limpa_a_tela()
-                        tarefas.menu_tarefas_atrasadas()
-                        tarefasAtrasadas = tarefas.filtrar_tarefas_atrasadas(tarefasDB)
-                        if tarefasAtrasadas == []:
-                            print('NÃO HÁ TAREFAS ATRASADAS')
-                            continue
-                        else:
-                            tarefas.mostra_tarefas(tarefasAtrasadas)
-                            continue
+                        while True:
+                            gravacao = gravacaoTxt.menu_deseja_gravar_saida()
+                            tarefasAtrasadas = tarefas.filtrar_tarefas_atrasadas(tarefasDB)
+                            match gravacao:
+                                case "1":
+                                    limpa_a_tela()
+                                    if tarefasAtrasadas == []:
+                                        print('NÃO HÁ TAREFAS ATRASADAS')
+                                        gravacaoTxt.gravar_saida_txt('NÃO HÁ TAREFAS ATRASADAS')
+                                    else:
+                                        gravacaoTxt.gravar_saida_txt(tarefas.string_mostra_tarefas(tarefasAtrasadas))
+                                case "2":
+                                    limpa_a_tela()
+                                    if tarefasAtrasadas == []:
+                                        print('NÃO HÁ TAREFAS ATRASADAS')
+                                    else:
+                                        tarefas.menu_tarefas_atrasadas()
+                                        tarefas.mostra_tarefas(tarefasAtrasadas)
+                                case _:
+                                    print("OPÇÃO INVÁLIDA, TENTE NOVAMENTE!")
+                                    continue
+                            break
+                        continue
                     case "8":
                         tarefas.insere_plano_para_complitude(tarefasDB)
                         continue

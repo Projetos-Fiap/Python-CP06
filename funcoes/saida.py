@@ -3,24 +3,45 @@ import os
 # Defininfo função que limpa a tela do terminal
 limpa_a_tela = lambda: os.system('cls')
 
+def string_lista_saidas(saidas):
+    string = ""
+    if len(saidas) == 0:
+        string += "\n\n>>NENHUMA SAÍDA REGISTRADA.<<"
+    else:
+        string += '\n'
+        string += "=================================\n"
+        string += "||    Histórico de saídas     ||\n"
+        string += "=================================\n"
+        for saida in saidas:
+            string += '\n'
+            string += f"DATA     : {saida['data']}\n"
+            string += f"DESCRICAO: {saida['descricao']}\n"
+            string += "ITENS:\n"
+            for item in saida['itens']:
+                string += f"{item['quantidade']} * {item['suprimento']}\n"
+            string += '\n'
+            string += '-----------------------------------\n'
+    return string
+
 # Mostra na tela todas as saídas
 def listar_saidas(saidas):
-    if len(saidas) == 0:
-        print('\n\n >>NENHUMA SAÍDA REGISTRADA<<')
-    else:
-        print('\n')
-        print("======================================")
-        print("||        REGISTRO DE SAíDAS        ||")
-        print("======================================")
-        for saida in saidas:
-            print()
-            print(f"Data: {saida['data']}\n")
-            print(f"Descrição: {saida['descricao']}")
-            for item in saida['itens']:
-                valorItem = item['valor'] * float(item['quantidade'])
-                print(f"{item['quantidade']} * {item['suprimento']} = ", end = "")
-                print("R$ %.2f" % valorItem)
-            print("------------------------------------")
+    # if len(saidas) == 0:
+    #     print('\n\n >>NENHUMA SAÍDA REGISTRADA<<')
+    # else:
+    #     print('\n')
+    #     print("======================================")
+    #     print("||        REGISTRO DE SAíDAS        ||")
+    #     print("======================================")
+    #     for saida in saidas:
+    #         print()
+    #         print(f"Data: {saida['data']}\n")
+    #         print(f"Descrição: {saida['descricao']}")
+    #         for item in saida['itens']:
+    #             valorItem = item['valor'] * float(item['quantidade'])
+    #             print(f"{item['quantidade']} * {item['suprimento']} = ", end = "")
+    #             print("R$ %.2f" % valorItem)
+    #         print("------------------------------------")
+    print(string_lista_saidas(saidas))
 
 # Mostra na tela o menu de saídas  
 def mostra_menu_saidas():

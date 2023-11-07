@@ -159,24 +159,48 @@ def listar_saidas(saidas):
                 print("R$ %.2f" % valorItem)
             print("------------------------------------")
 
-# Mostra na tela todas as saídas
-def listar_pedidos(pedidos):
+
+def string_lista_pedidos(pedidos):
+    string = ""
     if len(pedidos) == 0:
-        print('\n\n >>NENHUM PEDIDO REGISTRADO<<')
+        string += "\n\n>>NENHUM PEDIDO REGISTRADO.<<"
     else:
-        print('\n')
-        print("======================================")
-        print("||        REGISTRO DE PEDIDOS        ||")
-        print("======================================")
+        string += '\n'
+        string += "======================================\n"
+        string += "||        REGISTRO DE PEDIDOS        ||\n"
+        string += "======================================\n"
         for pedido in pedidos:
-            print()
-            print(f"Data do pedido: {pedido['dataPedido']}")
-            print(f"Data de entrega: {pedido['dataEntrega']}\n")
-            print("Frete: R$ %.2f" % pedido['frete'])
-            print("Total pedido: R$ %.2f" % pedido['valorTotal'])
-            print(f"Descrição: {pedido['descricao']}\n")
+            string += '\n'
+            string += f"Data do pedido: {pedido['dataPedido']}\n"
+            string += f"Data de entrega: {pedido['dataEntrega']}\n"
+            string += "Frete: R$ %.2f\n" % pedido['frete']
+            string += "Total pedido: R$ %.2f\n" % pedido['valorTotal']
+            string += f"Descrição: {pedido['descricao']}\n"
             for item in pedido['itens']:
                 valorItem = item['valor'] * float(item['quantidade'])
-                print(f"{item['quantidade']} * {item['suprimento']} = ", end = "")
-                print("R$ %.2f" % valorItem)
-            print("------------------------------------")
+                string += f"{item['quantidade']} * {item['suprimento']} = "
+                string += "R$ %.2f\n" % valorItem
+            string += "------------------------------------\n"
+    return string
+# Mostra na tela todas as saídas
+def listar_pedidos(pedidos):
+    # if len(pedidos) == 0:
+    #     print('\n\n >>NENHUM PEDIDO REGISTRADO<<')
+    # else:
+    #     print('\n')
+    #     print("======================================")
+    #     print("||        REGISTRO DE PEDIDOS        ||")
+    #     print("======================================")
+    #     for pedido in pedidos:
+    #         print()
+    #         print(f"Data do pedido: {pedido['dataPedido']}")
+    #         print(f"Data de entrega: {pedido['dataEntrega']}\n")
+    #         print("Frete: R$ %.2f" % pedido['frete'])
+    #         print("Total pedido: R$ %.2f" % pedido['valorTotal'])
+    #         print(f"Descrição: {pedido['descricao']}\n")
+    #         for item in pedido['itens']:
+    #             valorItem = item['valor'] * float(item['quantidade'])
+    #             print(f"{item['quantidade']} * {item['suprimento']} = ", end = "")
+    #             print("R$ %.2f" % valorItem)
+    #         print("------------------------------------")
+    print(string_lista_pedidos(pedidos))

@@ -55,7 +55,6 @@ def carrega_compras():
     try:
         with open('./bases/compras.json', 'r', encoding='utf-8') as arquivo:
             # Ler os dados em formato JSON do arquivo
-            print(arquivo)
             compras = json.load(arquivo)
             return compras
     except FileNotFoundError:
